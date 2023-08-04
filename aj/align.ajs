@@ -1,0 +1,4 @@
+#AJS
+filter align {
+(${rmag}>15 && ${rmag}<20) {draw}
+}

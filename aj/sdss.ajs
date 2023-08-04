@@ -1,0 +1,4 @@
+#AJS
+filter sdss {
+(${rmag}>15 && ${rmag}<17) {draw}
+}

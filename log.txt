@@ -48,14 +48,19 @@ Preparing known redshifts
 	NED cone search 10' radius
 	Redshift Flag: like 's%' (selects spectroscopic) or sls (better b/c only uses spectral lines (no weird methods))
 
-- 2nd mask: file like archivalz?
-- dispersion direction?
-- make regions for archivalz.
-- how to get full PS catalog in the region?
-- implement improvements suggested by David in the google doc
+- 2nd mask: file like archivalz
 - make target catalog for aladin instead of region file?
-- ask for output folder instead of redirecting output.
-- version control
+- implement improvements suggested by David in the google doc
+	- implement penalty for off-axis
+- make regions for archivalz
+- make regions for selected and non-selected
+x how to get full PS catalog in the region?
+	x use api in jupyter notebook
+x ask for output folder instead of redirecting output.
+x version control
+x dispersion direction?
+	x always perpendicular to maskPA (doesn't depend on slitPA)
+- how to put ps_api library in path?
 
 *******
 2nd attempt with different PA
@@ -67,6 +72,26 @@ python3 deimosfootprint.py "00:03:45.5025197 +10:04:27.708330" -30 > 0003/2/mask
 
 python3 prioritize.py file.json > 2/targets.txt
 python3 prioritize.py 2/file.json > 2/targets.txt
+
+
+
+*******
+Starting over on RMJ0003/
+
+tests:
+	python3 prioritize.py RMJ0003/1/
+	python3 prioritize.py RMJ0003 1
+
+phot_1.csv: nDetections>1, rmag>-990
+phot_2.csv: nDetections unconstrained, rmag>-990
+phot.csv: unconstrained
+
+MASK1
+python3 deimosfootprint.py "00:03:48.8888534 +10:04:10.737999" -140 > RMJ0003/1/mask1.reg
+python3 prioritize.py RMJ0003 1
+
+MASK2
+python3 deimosfootprint.py "00:03:50.0443707 +10:04:22.110113" -140 > RMJ0003/2/mask1.reg
 
 
 
