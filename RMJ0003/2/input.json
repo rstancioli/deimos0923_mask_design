@@ -4,7 +4,13 @@
   "zclust": 0.37,
   "slitPA": -98,
   "BCGmag": 18.288,
-  "specialtargets": []
+  "previous_masks": ["RMJ0003/1/dsim/output.txt"],
+  "exclude_target": [],
+  "specialtargets": [
+[0.92951200,
+10.02100600,
+21.305,
+1000]]
 }
 
 

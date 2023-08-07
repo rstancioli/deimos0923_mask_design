@@ -3,11 +3,37 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 from astropy.io import ascii, votable
+from astropy.table import Table
+from astropy.coordinates import SkyCoord
 import json
 from types import SimpleNamespace
 
 degtol = 0.001 # for matching targets w/archival z's
 
+def read_target_file(io_dir, filename):
+    with open('{}{}'.format(io_dir, filename),'r') as targets:
+        lines = targets.readlines()
+
+    align = []
+    targets = []
+    for line in lines:
+        line_data = line.strip().split()
+        if len(line_data)==9:
+            align.append(line_data)
+        elif len(line_data)==10:
+            targets.append(line_data)
+    return align, targets
+
+# prepare column names to read and write csv files
+columns = ['OBJNAME', 'RA', 'DEC', 'EQX', 'MAG', 'band', 'PCODE', 'LIST', 'SEL?', 'PA', 'L1', 'L2']
+dtype = []
+for column in columns:
+    if column=='SEL?':
+        dtype.append('i4')
+    else:
+        dtype.append('<U12')
+
+# Read input
 if len(sys.argv)==3:
     cluster_dir = sys.argv[1] + '/'
     mask_number = sys.argv[2]
@@ -58,49 +84,20 @@ except:
 v.cosdec = np.cos(np.radians(v.guideDEC))
 print(v)
 
-### OLD INPUT METHOD
-# # RMJ 1219: USER MUST CHANGE THESE
-# v.maskRA = 184.723 
-# v.maskDEC = 50.900 
-# v.zclust=0.535
-# v.slitPA=32
-# v.BCGmag = 21.23
-# v.guideRA,v.guideDEC,v.guidemag = (184.82564,50.87693,16.62)
-# v.cosdec = np.cos(np.radians(v.guideDEC))
-# v.aligninfo = [[184.94876,50.91130,16.08], # maybe off SE corner, but great if it's on!
-#                  [184.91292,50.92500,18.04],
-#                  [184.88859,50.92163,17.09], 
-#                  [184.82199,50.96310,15.41],#possibly in E vignetted area
-#                  [184.54643,50.85060,17.12],
-#                  [184.54997,50.87731,16.06]]#possibly in W vignetted area
-# # RMJ 0003: USER MUST CHANGE THESE
-# v.maskRA = 0.96952219625
-# v.maskDEC = 10.06685767
-# v.zclust=0.37
-# v.slitPA=-2
-# v.BCGmag = 18.288
-# v.guideRA,v.guideDEC,v.guidemag = (001.08345800, +10.07273700, 16.396)
-# v.cosdec = np.cos(np.radians(v.guideDEC))
-# v.aligninfo = [[000.94828400, +09.96222900, 15.765],
-#             [001.05096900, +10.17006100, 16.073],
-#             [001.09680700, +10.13814800, 16.484],
-#             [001.06405100, +10.16007700, 18.052],
-#             [000.90873600, +09.97891300, 18.173],
-#             [001.06154100, +10.17188100, 19.690]]
-# # Special Targets 
-# v.specialtargets = []
-# example:   [226.96435,57.84257,18.02,5000],# ra dec mag priority
-
-                
-# # load known redshifts
-# knowndata = np.loadtxt('archivalz.txt')
-# knownra = knowndata[:,0]
-# knowndec = knowndata[:,1]
-
 # load known redshifts (new_method)
 knowndata = ascii.read('{}archivalz.csv'.format(cluster_dir))
 knownra = list(knowndata['RA'].data)
 knowndec = list(knowndata['DEC'].data)
+
+# load selected targets in other masks
+selected = []
+# selectedra = []
+# selecteddec = []
+if v.previous_masks:
+    for mask_path in v.previous_masks:
+        _, targets = read_target_file('', mask_path)
+        df_targets = Table(np.array(targets), names=columns[:-2], dtype=dtype[:-2])
+        selected += list(df_targets[df_targets['SEL?']==1]['OBJNAME'])
 
 def raformatter(ra):
     ra /= 15 # degrees to hours
@@ -206,6 +203,7 @@ for thisRA,thisDEC,thismag in v.aligninfo:
 
 
 # special targets.
+# careful not to repeat special targets! This is not being checked automatically
 nspecial = 0
 for thisRA,thisDEC,thismag,thispri in v.specialtargets:
     # deprecated: look for this targ in PS catalog
@@ -237,7 +235,13 @@ for thisRA,thisDEC,thismag,thispri in v.specialtargets:
 # now match the 2 galaxy cats, starting w/highest priority objects, and
 # output the matched info
 nslitcandidates = 0
+n_skipped = 0
 for i in range(len(Lclust)):
+    # come up with a 16-char-max name for this obj. For Pan-STARRS,
+    # use the last 10 digits of the objid (the 1st 8 seem to be the
+    # same for a given area of sky)
+    name = str(zID[i])[-10:]
+
     priority = Lclust[i]
     mag = 24 # default if missing
     if priority<0.01:
@@ -258,6 +262,12 @@ for i in range(len(Lclust)):
         mag999.write('fk5;circle %f %f 0.001 # color=yellow\n'%(ra[i],dec[i]))
         continue
 
+    # If this is mask2, reject targets from mask1
+    if name in selected:
+        # print('Target has been excluded!!!!')
+        n_skipped += 1
+        continue
+
     # if we got here we have a decent target, but let's reject it
     # if it has an archival redshift AND is near ctr of field
     myRA = photRA[j]   # use phot cat coords for consistency w/stars!
@@ -265,6 +275,7 @@ for i in range(len(Lclust)):
     # check for near ctr of field
     distfromctr = np.sqrt(((myRA-v.maskRA)*v.cosdec)**2+(myDEC-v.maskDEC)**2)
     if distfromctr < 0.083: # 0.083 deg = 5' = 1 chip
+    # if distfromctr < 0.12: # 1.5 chips
         # check for match w/known z
         distfromknown = np.sqrt(((myRA-knownra)*v.cosdec)**2+(myDEC-knowndec)**2)
         if distfromknown.min() < degtol:
@@ -289,10 +300,6 @@ for i in range(len(Lclust)):
     #    sys.stderr.write('preselecting %d\n' % (int(priority)))
     #    preselect = 1
         
-    # come up with a 16-char-max name for this obj. For Pan-STARRS,
-    # use the last 10 digits of the objid (the 1st 8 seem to be the
-    # same for a given area of sky)
-    name = str(zID[i])[-10:]
     # adjustments to slit length? *****TBD******
     outstr = '%-15s %-13s %-12s 2000.0 %5.2f r %d 1 0 %d\n' %  (name,raformatter(myRA),decformatter(myDEC),mag,priority,v.slitPA)
     color = 'green'   
@@ -300,8 +307,31 @@ for i in range(len(Lclust)):
     # Add to region file for later inspection
     slits.write('fk5;circle %f %f 0.001 # color=%s text={%d}\n'%(myRA,myDEC,color,priority))
 
+sys.stderr.write('skipped {} targets selected in previous masks\n'.format(n_skipped))
+
 if nslitcandidates <100:
     sys.stderr.write('WARNING: few slit candidates, something probably went wrong.\n')
+
+# Create target catalog for Aladin
+
+targets.close()
+unmatched.close()
+mag999.close()
+slits.close()
+
+align, targets = read_target_file(io_dir, 'targets.txt')
+
+### IMPORTANT
+# If L1, L2 were used, we have to change:
+#   (i) the 'names' argument to match the number of columns
+#   (ii) create a function like read_target_file with the right conditions
+df_targets = Table(np.array(targets), names=columns[:-2])
+df_align = Table(np.array(align), names=columns[:-3])
+# Sometimes this doesn't work, so we have to try this. I have to fix it!
+# df_align = Table(np.array(align[:-1]), names=columns[:-3])
+
+df_targets.write('{}targets.csv'.format(io_dir), format='ascii.csv', overwrite=True)
+df_align.write('{}align.csv'.format(io_dir), format='ascii.csv', overwrite=True)
 
 # add sky slits
 #outstr = '01010101 15:09:00 +57:59:22 2000.0 20.00 r 5000 1 1 %d' %  (v.slitPA)

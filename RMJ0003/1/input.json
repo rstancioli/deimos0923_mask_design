@@ -4,6 +4,8 @@
   "zclust": 0.37,
   "slitPA": -98,
   "BCGmag": 18.288,
+  "previous_masks": [],
+  "exclude_target": ["9248237780"],
   "specialtargets": [
 [0.92951200,
 10.02100600,

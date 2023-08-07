@@ -1,0 +1,12 @@
+{
+  "maskRA": 350.2847423783333,
+  "maskDEC": 29.21667663083333,
+  "zclust": 0.49,
+  "slitPA": 87,
+  "BCGmag": 19.53,
+  "previous_masks": [],
+  "exclude_target": [],
+  "specialtargets": []
+}
+
+

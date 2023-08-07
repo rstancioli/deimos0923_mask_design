@@ -1,3 +1,4 @@
+____________________________________________________________________________________
 RMJ000343.8+100123.8
 
 http://irtfweb.ifa.hawaii.edu/~spex/parrefrac/?observatory=Keck2&hahrs=-4&hamin=00&hasec=00&decdeg=10&decmin=01&decsec=00&bar_pressure=615&water_vapor=2&temp_c=0&submit=Submit
@@ -48,12 +49,18 @@ Preparing known redshifts
 	NED cone search 10' radius
 	Redshift Flag: like 's%' (selects spectroscopic) or sls (better b/c only uses spectral lines (no weird methods))
 
-- 2nd mask: file like archivalz
-- make target catalog for aladin instead of region file?
+- 2nd mask: make file like archivalz from output to exclude from target list
+- make target catalog for aladin instead of region file
+- make catalog for archivalz
+- make catalogs for selected and non-selected
 - implement improvements suggested by David in the google doc
 	- implement penalty for off-axis
-- make regions for archivalz
-- make regions for selected and non-selected
+x bogus selected targets
+	x check PS catalogs (photo and zphoto)
+		x bogus targets have low nDetections
+	x remove (by hand?)
+		x maybe using nDetections would work
+			x use nDetections=10
 x how to get full PS catalog in the region?
 	x use api in jupyter notebook
 x ask for output folder instead of redirecting output.
@@ -61,6 +68,7 @@ x version control
 x dispersion direction?
 	x always perpendicular to maskPA (doesn't depend on slitPA)
 - how to put ps_api library in path?
+- implement exclude_manually (input file already changed)
 
 *******
 2nd attempt with different PA
@@ -78,20 +86,40 @@ python3 prioritize.py 2/file.json > 2/targets.txt
 *******
 Starting over on RMJ0003/
 
-tests:
-	python3 prioritize.py RMJ0003/1/
-	python3 prioritize.py RMJ0003 1
+use david's archivalz.txt file
+	convert david's output into csv
 
 phot_1.csv: nDetections>1, rmag>-990
 phot_2.csv: nDetections unconstrained, rmag>-990
-phot.csv: unconstrained
+phot_3.csv (?): unconstrained
+phot.cvs: nDetections>10
 
 MASK1
 python3 deimosfootprint.py "00:03:48.8888534 +10:04:10.737999" -140 > RMJ0003/1/mask1.reg
 python3 prioritize.py RMJ0003 1
 
+
 MASK2
 python3 deimosfootprint.py "00:03:50.0443707 +10:04:22.110113" -140 > RMJ0003/2/mask1.reg
+change 2/input.json to read output file
+python3 prioritize.py RMJ0003 2
+
+
+grep -v diamond RMJ0003A.reg >RMJ0003A-safe.reg
+
+
+____________________________________________________________________________________
+RMJ2321 (I'll be using Faik's region file to place the mask where he wants.)
+
+Run the SpeX PARALLACTIC ANGLE CALCULATOR.
+Parallactic Angle =   -85.3380966      or    94.6619034      or    274.661896      degrees
+
+Create a mask region somewhere (RA and Dec can be the nominal coordinates for the cluster)  by typing: 
+python3 deimosfootprint.py "23:21:09.5327035 +29:12:52.921937" 45.5 > RMJ2321/1/mask1.reg. Load the region file into Aladin. On the stack panel (right-hand side), click on the Drawing plane and select all objects. Now you can move the mask to the position you want. The cross in the middle of a chip gap is the central position; click on it to get the new coordinates. Now create a new mask. You can try adjusting the angle as well.
+python3 deimosfootprint.py "23:21:08.3381708 +29:13:00.035871" 45 > RMJ2321/1/mask1.reg
+Load the new mask into Aladin and inspect it.
+
+python3 prioritize.py RMJ2321 1
 
 
 

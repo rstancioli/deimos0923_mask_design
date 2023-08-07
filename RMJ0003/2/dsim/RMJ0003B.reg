@@ -1,0 +1,155 @@
+# RMJ0003B.reg
+# ds9 regions file generated from RMJ0003B.fits
+# by dsim2regions.py
+
+global color=#FF0000
+j2000
+
+# BEGIN PNT
+circle(    0.884154d,    10.125883d   5.0") # color=#FF00FF
+# END PNT
+# BEGIN SLITS
+box(    0.908759d,     9.978905d   4.0",   4.0"  -50d) # color=#0000FF
+box(    0.872151d,     9.978539d   4.0",   4.0"  -50d) # color=#0000FF
+box(    0.881084d,     9.963356d   4.0",   4.0"  -50d) # color=#0000FF
+box(    1.065930d,    10.118544d   4.0",   4.0"  -50d) # color=#0000FF
+box(    1.018930d,    10.157475d   4.0",   4.0"  -50d) # color=#0000FF
+box(    0.907051d,     9.956870d  48.6",   1.0"   -8d) # color=#FF0000
+box(    0.854865d,     9.982890d  10.5",   1.0"   -8d) # color=#FF0000
+box(    0.936242d,     9.975874d  11.4",   1.0"   -8d) # color=#FF0000
+box(    0.934184d,     9.974416d  11.1",   1.0"   -8d) # color=#FF0000
+box(    0.894100d,    10.000316d  14.9",   1.0"   -8d) # color=#FF0000
+box(    0.909325d,     9.991647d  13.5",   1.0"   -8d) # color=#FF0000
+box(    0.887631d,    10.025485d  21.1",   1.0"   -8d) # color=#FF0000
+box(    0.919456d,    10.029931d  13.0",   1.0"   -8d) # color=#FF0000
+box(    0.920383d,    10.026000d   9.5",   1.0"   -8d) # color=#FF0000
+box(    0.933190d,    10.024727d   7.6",   1.0"   -8d) # color=#FF0000
+box(    0.943363d,    10.027172d  13.0",   1.0"   -8d) # color=#FF0000
+box(    0.899910d,    10.020201d  14.0",   1.0"   -8d) # color=#FF0000
+box(    0.922366d,    10.016326d  13.1",   1.0"   -8d) # color=#FF0000
+box(    0.930588d,    10.024173d  11.5",   1.0"   -8d) # color=#FF0000
+box(    0.940044d,    10.023931d   8.9",   1.0"   -8d) # color=#FF0000
+box(    0.942910d,    10.024275d  10.3",   1.0"   -8d) # color=#FF0000
+box(    0.895825d,    10.013425d  17.2",   1.0"   -8d) # color=#FF0000
+box(    0.917517d,    10.015596d  21.1",   1.0"   -8d) # color=#FF0000
+box(    0.929336d,    10.013683d   9.1",   1.0"   -8d) # color=#FF0000
+box(    0.938713d,    10.008355d   8.0",   1.0"   -8d) # color=#FF0000
+box(    0.883201d,     9.989139d  42.2",   1.0"   -8d) # color=#FF0000
+box(    0.894599d,     9.987666d  16.0",   1.0"   -8d) # color=#FF0000
+box(    0.902583d,     9.988013d  23.1",   1.0"   -8d) # color=#FF0000
+box(    0.945931d,     9.986566d  18.5",   1.0"   -8d) # color=#FF0000
+box(    0.920729d,    10.037353d   8.9",   1.0"   -8d) # color=#FF0000
+box(    0.938944d,    10.037963d  11.4",   1.0"   -8d) # color=#FF0000
+box(    0.941359d,    10.039625d  14.8",   1.0"   -8d) # color=#FF0000
+box(    0.940753d,    10.033007d  13.4",   1.0"   -8d) # color=#FF0000
+box(    0.974734d,    10.035721d  22.0",   1.0"   -8d) # color=#FF0000
+box(    0.976680d,    10.039033d  13.6",   1.0"   -8d) # color=#FF0000
+box(    0.937309d,    10.047404d  17.3",   1.0"   -8d) # color=#FF0000
+box(    0.938292d,    10.050647d  11.9",   1.0"   -8d) # color=#FF0000
+box(    0.943273d,    10.051968d   9.5",   1.0"   -8d) # color=#FF0000
+box(    0.946963d,    10.052909d  19.1",   1.0"   -8d) # color=#FF0000
+box(    0.975190d,    10.054706d  24.7",   1.0"   -8d) # color=#FF0000
+box(    0.973881d,    10.050940d  10.5",   1.0"   -8d) # color=#FF0000
+box(    0.925220d,    10.064262d   8.5",   1.0"   -8d) # color=#FF0000
+box(    0.951379d,    10.063288d  11.3",   1.0"   -8d) # color=#FF0000
+box(    0.954894d,    10.063519d  11.0",   1.0"   -8d) # color=#FF0000
+box(    0.962761d,    10.073351d  37.3",   1.0"   -8d) # color=#FF0000
+box(    0.972714d,    10.073918d  26.7",   1.0"   -8d) # color=#FF0000
+box(    0.964158d,    10.086888d  16.8",   1.0"   -8d) # color=#FF0000
+box(    0.961246d,    10.095181d  26.3",   1.0"   -8d) # color=#FF0000
+box(    0.965838d,    10.099212d  30.7",   1.0"   -8d) # color=#FF0000
+box(    1.043139d,    10.095551d  51.9",   1.0"   -8d) # color=#FF0000
+box(    0.972013d,    10.102891d  33.5",   1.0"   -8d) # color=#FF0000
+box(    0.988316d,    10.106745d  24.0",   1.0"   -8d) # color=#FF0000
+box(    0.995189d,    10.107032d  19.1",   1.0"   -8d) # color=#FF0000
+box(    1.017734d,    10.107407d  13.0",   1.0"   -8d) # color=#FF0000
+box(    0.981018d,    10.124983d  27.8",   1.0"   -8d) # color=#FF0000
+box(    1.060519d,    10.127378d  20.2",   1.0"   -8d) # color=#FF0000
+box(    1.021901d,    10.137512d  17.6",   1.0"   -8d) # color=#FF0000
+box(    1.063528d,    10.138447d  20.6",   1.0"   -8d) # color=#FF0000
+box(    1.000554d,    10.144818d  56.7",   1.0"   -8d) # color=#FF0000
+box(    0.994931d,    10.120814d  24.7",   1.0"   -8d) # color=#FF0000
+box(    0.969172d,    10.114439d  34.3",   1.0"   -8d) # color=#FF0000
+box(    1.065012d,    10.111732d  49.9",   1.0"   -8d) # color=#FF0000
+box(    1.020847d,    10.166148d  29.2",   1.0"   -8d) # color=#FF0000
+box(    1.028830d,    10.187156d  17.2",   1.0"   -8d) # color=#FF0000
+box(    1.024608d,    10.175123d  18.1",   1.0"   -8d) # color=#FF0000
+box(    1.029238d,    10.176350d  18.2",   1.0"   -8d) # color=#FF0000
+box(    1.032181d,    10.179250d  20.6",   1.0"   -8d) # color=#FF0000
+# END SLITS
+# BEGIN TARGETS
+diamond point(    0.892763d,    10.066056d) # color=#00FF00
+diamond point(    0.908750d,     9.978908d) # color=#00FF00
+diamond point(    0.872142d,     9.978542d) # color=#00FF00
+diamond point(    0.881075d,     9.963358d) # color=#00FF00
+diamond point(    1.065921d,    10.118547d) # color=#00FF00
+diamond point(    1.018921d,    10.157478d) # color=#00FF00
+diamond point(    0.904825d,     9.956567d) # color=#00FF00
+diamond point(    0.854225d,     9.982806d) # color=#00FF00
+diamond point(    0.936358d,     9.975894d) # color=#00FF00
+diamond point(    0.934017d,     9.974397d) # color=#00FF00
+diamond point(    0.893813d,    10.000281d) # color=#00FF00
+diamond point(    0.909800d,     9.991717d) # color=#00FF00
+diamond point(    0.888033d,    10.025544d) # color=#00FF00
+diamond point(    0.919079d,    10.029883d) # color=#00FF00
+diamond point(    0.920254d,    10.025986d) # color=#00FF00
+diamond point(    0.933146d,    10.024725d) # color=#00FF00
+diamond point(    0.943317d,    10.027169d) # color=#00FF00
+diamond point(    0.900479d,    10.020283d) # color=#00FF00
+diamond point(    0.922650d,    10.016369d) # color=#00FF00
+diamond point(    0.931158d,    10.024256d) # color=#00FF00
+diamond point(    0.940175d,    10.023953d) # color=#00FF00
+diamond point(    0.942558d,    10.024231d) # color=#00FF00
+diamond point(    0.894867d,    10.013297d) # color=#00FF00
+diamond point(    0.918338d,    10.015714d) # color=#00FF00
+diamond point(    0.929588d,    10.013722d) # color=#00FF00
+diamond point(    0.938604d,    10.008344d) # color=#00FF00
+diamond point(    0.886304d,     9.989572d) # color=#00FF00
+diamond point(    0.895138d,     9.987744d) # color=#00FF00
+diamond point(    0.903988d,     9.988211d) # color=#00FF00
+diamond point(    0.944721d,     9.986403d) # color=#00FF00
+diamond point(    0.920579d,    10.037336d) # color=#00FF00
+diamond point(    0.939225d,    10.038006d) # color=#00FF00
+diamond point(    0.940588d,    10.039522d) # color=#00FF00
+diamond point(    0.940729d,    10.033008d) # color=#00FF00
+diamond point(    0.975400d,    10.035817d) # color=#00FF00
+diamond point(    0.977158d,    10.039103d) # color=#00FF00
+diamond point(    0.937712d,    10.047464d) # color=#00FF00
+diamond point(    0.938625d,    10.050697d) # color=#00FF00
+diamond point(    0.942992d,    10.051933d) # color=#00FF00
+diamond point(    0.945883d,    10.052764d) # color=#00FF00
+diamond point(    0.973304d,    10.054450d) # color=#00FF00
+diamond point(    0.973762d,    10.050928d) # color=#00FF00
+diamond point(    0.925342d,    10.064283d) # color=#00FF00
+diamond point(    0.951217d,    10.063269d) # color=#00FF00
+diamond point(    0.955071d,    10.063547d) # color=#00FF00
+diamond point(    0.962867d,    10.073369d) # color=#00FF00
+diamond point(    0.974063d,    10.074108d) # color=#00FF00
+diamond point(    0.964175d,    10.086894d) # color=#00FF00
+diamond point(    0.959883d,    10.094997d) # color=#00FF00
+diamond point(    0.966567d,    10.099317d) # color=#00FF00
+diamond point(    1.037958d,    10.094842d) # color=#00FF00
+diamond point(    0.970879d,    10.102739d) # color=#00FF00
+diamond point(    0.988742d,    10.106808d) # color=#00FF00
+diamond point(    0.995429d,    10.107069d) # color=#00FF00
+diamond point(    1.017450d,    10.107372d) # color=#00FF00
+diamond point(    0.979537d,    10.124783d) # color=#00FF00
+diamond point(    1.059133d,    10.127192d) # color=#00FF00
+diamond point(    1.022854d,    10.137647d) # color=#00FF00
+diamond point(    1.064612d,    10.138600d) # color=#00FF00
+diamond point(    1.005050d,    10.145442d) # color=#00FF00
+diamond point(    0.996833d,    10.121081d) # color=#00FF00
+diamond point(    0.970171d,    10.114581d) # color=#00FF00
+diamond point(    1.059521d,    10.110981d) # color=#00FF00
+diamond point(    1.020950d,    10.166167d) # color=#00FF00
+diamond point(    1.030388d,    10.187375d) # color=#00FF00
+diamond point(    1.023846d,    10.175022d) # color=#00FF00
+diamond point(    1.029975d,    10.176456d) # color=#00FF00
+diamond point(    1.031083d,    10.179103d) # color=#00FF00
+# END TARGETS
+# BEGIN MASK
+polygon(    1.008578d,    10.190992d,     1.071678d,    10.138825d,     0.916032d,     9.956303d,     0.894137d,     9.952643d,     0.877596d,     9.951809d,     0.859257d,     9.953186d,     0.827927d,     9.979072d,     1.008578d,    10.190992d,     1.039914d,    10.165088d,     1.044470d,    10.147537d,     1.046502d,    10.131347d,     1.046632d,    10.109473d,     0.934218d,     9.977643d,     0.871127d,    10.029784d,     0.934218d,     9.977643d,     0.936104d,     9.979856d,     0.873013d,    10.031997d,     0.917280d,    10.083938d,     0.980374d,    10.031788d,     0.982260d,    10.034001d,     0.919166d,    10.086150d,     0.963447d,    10.138085d,     1.026544d,    10.085927d,     1.028431d,    10.088139d,     0.965334d,    10.140297d) # color = #FF0000
+# END MASK
+# BEGIN TV
+polygon(    0.942477d,    10.065363d,     0.905503d,    10.020126d,     0.860403d,    10.057390d,     0.898305d,    10.101864d,     0.942477d,    10.065363d,     0.915595d,    10.087578d,     0.877692d,    10.043107d) # color = #FFFF00
+# END TV
