@@ -5,10 +5,58 @@ import sys
 from astropy.io import ascii, votable
 from astropy.table import Table
 from astropy.coordinates import SkyCoord
+import astropy.units as u
+from scipy.stats import norm
 import json
 from types import SimpleNamespace
 
 degtol = 0.001 # for matching targets w/archival z's
+
+def project_onto_merger_axis(coord, center, pa=38):
+    """
+    coord is a SkyCoord object of the point to be projected.
+    center is a SkyCoord object of the origin.
+    pa is the angle (east of north) that defines the axis
+    """
+    ra, dec = coord.ra.deg, coord.dec.deg
+    ra_cen, dec_cen = center.ra.deg, center.dec.deg
+    # cosdec = np.cos(np.radians(dec.mean()))
+    cosdec = np.cos(np.radians(dec_cen))
+    y = dec - dec_cen
+    x = (ra - ra_cen)*cosdec
+    pa = np.radians(pa)
+    newx = (np.cos(pa)*x - np.sin(pa)*y)*60 # deg->arcmin
+    newy = (np.sin(pa)*x + np.cos(pa)*y)*60 # deg->arcmin
+    return newx, newy
+
+def project_list(wcs_list, center, pa):
+    x_list = []
+    y_list = []
+    for point in wcs_list:
+        x, y = project_onto_merger_axis(point, center, pa)
+        x_list.append(x)
+        y_list.append(y)
+    return np.array(x_list), np.array(y_list)
+
+def raformatter(ra):
+    ra /= 15 # degrees to hours
+    hrs = int(ra)
+    minutesleft = 60*(ra-hrs)
+    minutes = int(minutesleft)
+    seconds = 60*(minutesleft-minutes)
+    return '%02d:%02d:%06.3f' % (hrs,minutes,seconds)
+
+def decformatter(dec):
+    isneg = dec<0 # save this fact for later
+    dec = abs(dec)
+    deg = int(dec)
+    minutesleft = 60*(dec-deg)
+    minutes = int(minutesleft)
+    seconds = 60*(minutesleft-minutes)
+    if isneg:
+        return '-%02d:%02d:%05.2f' % (deg,minutes,seconds)
+    else:
+        return '+%02d:%02d:%05.2f' % (deg,minutes,seconds)
 
 def read_target_file(io_dir, filename):
     with open('{}{}'.format(io_dir, filename),'r') as targets:
@@ -98,26 +146,6 @@ if v.previous_masks:
         _, targets = read_target_file('', mask_path)
         df_targets = Table(np.array(targets), names=columns[:-2], dtype=dtype[:-2])
         selected += list(df_targets[df_targets['SEL?']==1]['OBJNAME'])
-
-def raformatter(ra):
-    ra /= 15 # degrees to hours
-    hrs = int(ra)
-    minutesleft = 60*(ra-hrs)
-    minutes = int(minutesleft)
-    seconds = 60*(minutesleft-minutes)
-    return '%02d:%02d:%06.3f' % (hrs,minutes,seconds)
-
-def decformatter(dec):
-    isneg = dec<0 # save this fact for later
-    dec = abs(dec)
-    deg = int(dec)
-    minutesleft = 60*(dec-deg)
-    minutes = int(minutesleft)
-    seconds = 60*(minutesleft-minutes)
-    if isneg:
-        return '-%02d:%02d:%05.2f' % (deg,minutes,seconds)
-    else:
-        return '+%02d:%02d:%05.2f' % (deg,minutes,seconds)
     
 # get redshifts and likelihood of being in cluster
 df = pd.read_csv('{}zphot.csv'.format(cluster_dir))
@@ -134,6 +162,17 @@ Lclust = np.exp(-0.5*(z-v.zclust)**2/zerr**2)/zerr
 #plt.hist(Lclust,bins=50)
 #plt.show()
 
+# calculate distance from axis
+# kernel_width is the standard deviation of the gaussian around the merger axis in arcmin.
+# The f_dist factor will multiply the priority.
+if v.axis['kernel_width']:
+    sys.stderr.write('Prioritizing cluster axis.\n')
+    sc_list =  SkyCoord(ra=ra, dec=dec, unit=u.deg)
+    cl_center = SkyCoord(v.axis['ra_center'], v.axis['dec_center'], unit=u.degree)
+    dist_axis = project_list(sc_list, cl_center, v.axis['axisPA'])
+    f_dist = norm.pdf(dist_axis[0], scale=v.axis['kernel_width'])
+else:
+    sys.stderr.write('Not prioritizing cluster axis.\n')
 
 # get photometry, to prioritize bright objecs
 # Using mean catalog
@@ -305,6 +344,9 @@ for i in range(len(Lclust)):
     #if int(priority) in preselections:
     #    sys.stderr.write('preselecting %d\n' % (int(priority)))
     #    preselect = 1
+
+    if v.axis['kernel_width']:
+        priority *= f_dist[i]
         
     # adjustments to slit length? *****TBD******
     outstr = '%-15s %-13s %-12s 2000.0 %5.2f r %d 1 0 %d\n' %  (name,raformatter(myRA),decformatter(myDEC),mag,priority,v.slitPA)
