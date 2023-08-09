@@ -5,7 +5,10 @@
   "slitPA": 87,
   "BCGmag": 19.53,
   "previous_masks": [],
-  "exclude_target": [],
+  "exclude_target": ["1568997157",
+"1572876368",
+"1682136039",
+"2933393391"],
   "specialtargets": []
 }
 

@@ -236,6 +236,7 @@ for thisRA,thisDEC,thismag,thispri in v.specialtargets:
 # output the matched info
 nslitcandidates = 0
 n_skipped = 0
+n_excluded = 0
 for i in range(len(Lclust)):
     # come up with a 16-char-max name for this obj. For Pan-STARRS,
     # use the last 10 digits of the objid (the 1st 8 seem to be the
@@ -266,6 +267,11 @@ for i in range(len(Lclust)):
     if name in selected:
         # print('Target has been excluded!!!!')
         n_skipped += 1
+        continue
+
+    if name in v.exclude_target:
+        # print('Target has been excluded!!!!')
+        n_excluded += 1
         continue
 
     # if we got here we have a decent target, but let's reject it
@@ -308,6 +314,8 @@ for i in range(len(Lclust)):
     slits.write('fk5;circle %f %f 0.001 # color=%s text={%d}\n'%(myRA,myDEC,color,priority))
 
 sys.stderr.write('skipped {} targets selected in previous masks\n'.format(n_skipped))
+sys.stderr.write('excluded {} targets manually\n'.format(n_excluded))
+
 
 if nslitcandidates <100:
     sys.stderr.write('WARNING: few slit candidates, something probably went wrong.\n')
