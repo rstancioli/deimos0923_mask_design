@@ -185,22 +185,64 @@ python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimo
 ____________________________________________________________________________________
 RM J021952.2+012952.2
 
+MASK A
 python3 deimosfootprint.py "02:19:50.9328810 +01:29:00.838056" 0 > RMJ0219/1/mask1.reg
 python3 deimosfootprint.py "02:19:50.9328810 +01:29:00.838056" 180 > RMJ0219/1/mask1.reg
+python3 deimosfootprint.py "02:19:51.9143505 +01:29:04.389861" 180 > RMJ0219/1/mask1.reg
+
+faik
+	angles are wrong
+	not enough targets
 
 
+MASK B
+python3 deimosfootprint.py "02:19:46.8252639 +01:28:36.039735" 180 > RMJ0219/2/mask1.reg
 
 
 
 ____________________________________________________________________________________
+A384
+
+MASK A
+python3 deimosfootprint.py "02:48:02.0267519 -02:17:13.178614" -120 > A384/1/mask1.reg
+
+
+
+
+MASK B
+python3 deimosfootprint.py "02:48:03.2952000 -02:15:57.348000" -120 > A384/2/mask1.reg
+
+____________________________________________________________________________________
+RMJ0109
+
+MASK A
+python3 deimosfootprint.py "01:09:32.5752000 +33:03:16.898400" 45 > RMJ0109/1/mask1.reg
+python3 deimosfootprint.py "01:09:42.2955383 +33:04:01.370649" 45 > RMJ0109/1/mask1.reg
+
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ0109/1/dsim/
+
+Faik:
+	SlitPA could be better.
+	Alignment stars not well positioned. One of them looks completely wrong.
+
+
+MASK B
+Faik's mask B looks wrong.
+Not done yet.
+
+____________________________________________________________________________________
 ask david
+	dsim mask position
 	which strong lensing features
 	magnitude of special targets
-	orientation of mask B for RMJ2321
-	how to submit
 	5 arcsec slits?
+	orientation of mask B for RMJ2321
+	faik
+		catalog
+		align
+		2nd mask
+	
 
 
-to do:
-	- plot contours
-	- investigate mask position
+
+
