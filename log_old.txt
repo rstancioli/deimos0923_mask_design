@@ -185,9 +185,7 @@ python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimo
 ____________________________________________________________________________________
 RM J021952.2+012952.2
 
-python3 deimosfootprint.py "02:19:50.9328810 +01:29:00.838056" 0 > RMJ0219/1/mask1.reg
-python3 deimosfootprint.py "02:19:50.9328810 +01:29:00.838056" 180 > RMJ0219/1/mask1.reg
-
+python3 deimosfootprint.py "02:19:50.9328810 +01:29:00.838056" 0 > RMJ0248/1/mask1.reg
 
 
 
