@@ -116,6 +116,7 @@ RMJ2321 (I'll be using Faik's region file to place the mask where he wants.)
 Run the SpeX PARALLACTIC ANGLE CALCULATOR.
 Parallactic Angle =   -85.3380966      or    94.6619034      or    274.661896      degrees
 
+MASK A
 Create a mask region somewhere (RA and Dec can be the nominal coordinates for the cluster)  by typing: 
 python3 deimosfootprint.py "23:21:09.5327035 +29:12:52.921937" 45.5 > RMJ2321/1/mask1.reg. Load the region file into Aladin. On the stack panel (right-hand side), click on the Drawing plane and select all objects. Now you can move the mask to the position you want. The cross in the middle of a chip gap is the central position; click on it to get the new coordinates. Now create a new mask. You can try adjusting the angle as well.
 python3 deimosfootprint.py "23:21:08.3381708 +29:13:00.035871" 45 > RMJ2321/1/mask1.reg
@@ -125,10 +126,79 @@ python3 prioritize.py RMJ2321 1
 
 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ2321/1/dsim/
 
+MASK B
 python3 prioritize.py RMJ2321 2
-	changed the input file to 
+	changed the input file to exclude slits from the first mask.
+
+MASK C
+python3 deimosfootprint.py "23:21:09.5327035 +29:12:52.921937" 130 > RMJ2321/3/mask1.reg
+python3 deimosfootprint.py "23:20:50.8332914 +29:12:35.636413" 130 > RMJ2321/3/mask1.reg
+python3 deimosfootprint.py "23:20:50.8332914 +29:12:35.636413" 125 > RMJ2321/3/mask1.reg
+
+python3 prioritize.py RMJ2321 3
+
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ2321/3/dsim/
+
+(dsim Final Center: 23:20:50.835 +29:12:35.63)
+____________________________________________________________________________________
+RM J001938.7+033557.3
+
+00:19:38.7 +03:35:57
+0.28
+5550
+-67
+
+MASK A
+
+python3 deimosfootprint.py "00:19:36.6351588 +03:36:14.928274" -30 > RMJ0019/1/mask1.reg
+python3 deimosfootprint.py "00:19:36.6351588 +03:36:14.928274" -5 > RMJ0019/1/mask1.reg
+python3 deimosfootprint.py "00:19:40.3797821 +03:37:04.642511" -5 > RMJ0019/1/mask1.reg
+python3 deimosfootprint.py "00:19:40.3797821 +03:37:04.642511" 175 > RMJ0019/1/mask1.reg
+python3 deimosfootprint.py "00:19:33.7387987 +03:38:32.861753" 175 > RMJ0019/1/mask1.reg
+python3 deimosfootprint.py "00:19:34.2050580 +03:38:26.680717" 175 > RMJ0019/1/mask1.reg
+python3 prioritize.py RMJ0019 1
+guiding star is not very good. Moved to PA175. 
+
+Starting over:
+python3 deimosfootprint.py "00:19:39.5575141 +03:38:26.682746" -5 > RMJ0019/1/mask1.reg
+python3 deimosfootprint.py "00:19:40.4242931 +03:38:26.681976" -5 > RMJ0019/1/mask1.reg
+python3 prioritize.py RMJ0019 1
+added special targets
+
+special[1,2,3,4] not selected in mask 1 (2 and 4 very important). Increase priority for mask 2.
+
+run on iron:
+python3 /Users/dwittman/Observing/Keck/Tools/dsim2regions.py ./ RMJ0019A.fits --slits --targets --pointing --guider --mask RMJ0019A.reg
+then locally:
+grep -v diamond RMJ0019A.reg >RMJ0019A-safe.reg
+	doesn't work. I'll have to remove "diamond" manually on vim.
+
+MASK B
+
+python3 deimosfootprint.py "00:19:40.4621979 +03:38:16.089861" -5 > RMJ0019/2/mask1.reg
+python3 prioritize.py RMJ0019 2
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ0019/2/dsim/
 
 
 
 
+____________________________________________________________________________________
+RM J021952.2+012952.2
 
+python3 deimosfootprint.py "02:19:50.9328810 +01:29:00.838056" 0 > RMJ0248/1/mask1.reg
+
+
+
+
+____________________________________________________________________________________
+ask david
+	which strong lensing features
+	magnitude of special targets
+	orientation of mask B for RMJ2321
+	how to submit
+	5 arcsec slits?
+
+
+to do:
+	- plot contours
+	- investigate mask position

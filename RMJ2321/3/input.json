@@ -1,0 +1,18 @@
+{
+  "maskRA": 350.2118053808333,
+  "maskDEC": 29.20989900361111,
+  "zclust": 0.49,
+  "slitPA": 87,
+  "BCGmag": 19.53,
+  "axis": {
+    "kernel_width": 0,
+    "ra_center": 350.2847423783333,
+    "dec_center": 29.21667663083333,
+    "axisPA": 45
+  }, 
+  "previous_masks": ["RMJ2321/1/dsim/output.txt"],
+  "exclude_target": [],
+  "specialtargets": []
+}
+
+

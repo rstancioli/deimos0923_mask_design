@@ -346,7 +346,10 @@ for i in range(len(Lclust)):
     #    preselect = 1
 
     if v.axis['kernel_width']:
-        priority *= f_dist[i]
+        priority *= 2*v.axis['kernel_width']*f_dist[i]
+
+    if priority<1:
+        priority = 1
         
     # adjustments to slit length? *****TBD******
     outstr = '%-15s %-13s %-12s 2000.0 %5.2f r %d 1 0 %d\n' %  (name,raformatter(myRA),decformatter(myDEC),mag,priority,v.slitPA)
