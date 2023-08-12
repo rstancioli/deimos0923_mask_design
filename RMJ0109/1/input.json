@@ -1,0 +1,18 @@
+{
+  "maskRA": 17.394647327499996,
+  "maskDEC": 33.08165986111111,
+  "zclust": 0.48,
+  "slitPA": 80,
+  "BCGmag": 18.773,
+  "axis": {
+    "kernel_width": 0,
+    "ra_center": 4.909949823333332,
+    "dec_center": 3.607708264166667,
+    "axisPA": 175
+  }, 
+  "previous_masks": [],
+  "exclude_target": [],
+  "specialtargets": []
+}
+
+

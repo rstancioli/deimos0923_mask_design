@@ -171,7 +171,9 @@ run on iron:
 python3 /Users/dwittman/Observing/Keck/Tools/dsim2regions.py ./ RMJ0019A.fits --slits --targets --pointing --guider --mask RMJ0019A.reg
 then locally:
 grep -v diamond RMJ0019A.reg >RMJ0019A-safe.reg
-	doesn't work. I'll have to remove "diamond" manually on vim.
+sed 's/diamond//' RMJ0019A.reg >RMJ0019A-safe.reg
+sed 's/diamond//' RMJ0019B.reg >RMJ0019B-safe.reg
+
 
 MASK B
 
@@ -179,8 +181,10 @@ python3 deimosfootprint.py "00:19:40.4621979 +03:38:16.089861" -5 > RMJ0019/2/ma
 python3 prioritize.py RMJ0019 2
 python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ0019/2/dsim/
 
-
-
+***** Trying again with new strong lens features selected by David.
+python3 prioritize.py RMJ0019 1
+python3 prioritize.py RMJ0019 2
+Ready.
 
 ____________________________________________________________________________________
 RM J021952.2+012952.2
@@ -194,32 +198,59 @@ faik
 	angles are wrong
 	not enough targets
 
+python3 prioritize.py RMJ0219 1
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ0219/1/dsim/
+sed 's/diamond//' RMJ0219A.reg >RMJ0219A-safe.reg
 
 MASK B
 python3 deimosfootprint.py "02:19:46.8252639 +01:28:36.039735" 180 > RMJ0219/2/mask1.reg
-
-
-
+python3 deimosfootprint.py "02:19:51.9143505 +01:29:04.389861" 210 > RMJ0219/2/mask1.reg
+python3 deimosfootprint.py "02:19:48.4058269 +01:29:01.546517" 210 > RMJ0219/2/mask1.reg
+python3 prioritize.py RMJ0219 2
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ0219/2/dsim/
+sed 's/diamond//' RMJ0219B.reg >RMJ0219B-safe.reg
 ____________________________________________________________________________________
 A384
 
 MASK A
 python3 deimosfootprint.py "02:48:02.0267519 -02:17:13.178614" -120 > A384/1/mask1.reg
-
-
-
+python3 prioritize.py A384 1
+sed 's/diamond//' A384A.reg >A384A-safe.reg
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/A384/1/dsim/
 
 MASK B
 python3 deimosfootprint.py "02:48:03.2952000 -02:15:57.348000" -120 > A384/2/mask1.reg
+python3 prioritize.py A384 2
+sed 's/diamond//' A384B.reg >A384B-safe.reg
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/A384/2/dsim/
+python3 deimosfootprint.py "02:48:06.762 -02:15:27.348000" -120 > A384/2/dsim/mask1_check.reg
 
-____________________________________________________________________________________
+Starting over mask B in folder 3/
+	One alignment star wouldn't get milled.
+python3 deimosfootprint.py "02:48:06.762 -02:15:27.348000" -120 > A384/3/mask1.reg
+python3 deimosfootprint.py "02:48:19.5842628 -02:15:23.536485" 60 > A384/3/mask2.reg
+python3 deimosfootprint.py "02:48:19.7286089 -02:15:53.812540" 60 > A384/3/mask2.reg
+
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/A384/3/dsim/
+
+"exclude_target": ["0264883804", "0411641748"]
+	didn't work to select what I wanted
+
+____________________________________________
 RMJ0109
 
 MASK A
 python3 deimosfootprint.py "01:09:32.5752000 +33:03:16.898400" 45 > RMJ0109/1/mask1.reg
-python3 deimosfootprint.py "01:09:42.2955383 +33:04:01.370649" 45 > RMJ0109/1/mask1.reg
+python3 deimosfootprint.py "01:09:42.2955383 +33:04:01.370649" 225 > RMJ0109/1/mask2.reg
+python3 deimosfootprint.py "01:09:34.7153586 +33:04:53.975500" 225 > RMJ0109/1/mask2.reg
 
+sed 's/diamond//' RMJ0109A.reg >RMJ0109A-safe.reg
 python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ0109/1/dsim/
+
+MASK B
+python3 deimosfootprint.py "01:09:19.7387941 +33:01:10.636678" 225 > RMJ0109/2/mask1.reg
+sed 's/diamond//' RMJ0109B.reg >RMJ0109B-safe.reg
+python3 process_dsim_output.py /Users/rodrigo/google_drive/research/deimos/deimos0923_mask_design/RMJ0109/2/dsim/
 
 Faik:
 	SlitPA could be better.

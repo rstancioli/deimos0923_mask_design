@@ -4,15 +4,12 @@ fk5;box 4.883336 3.745837 0.002 0.002 # color=red
 fk5;box 4.938182 3.529448 0.002 0.002 # color=red
 fk5;box 4.902347 3.529649 0.002 0.002 # color=red
 fk5;box 4.923943 3.506746 0.002 0.002 # color=red
-fk5;circle 4.893724 3.624842 0.001 # color=green text={5000}
-fk5;circle 4.912277 3.598439 0.001 # color=green text={50000}
-fk5;circle 4.911378 3.599640 0.001 # color=green text={2000}
-fk5;circle 4.905376 3.597970 0.001 # color=green text={50000}
-fk5;circle 4.903852 3.697548 0.001 # color=green text={10000}
-fk5;circle 4.898136 3.698327 0.001 # color=green text={10000}
-fk5;circle 4.900042 3.692348 0.001 # color=green text={10000}
-fk5;circle 4.873361 3.697120 0.001 # color=green text={10000}
-fk5;circle 4.871671 3.690222 0.001 # color=green text={10000}
+fk5;circle 4.912277 3.598439 0.001 # color=green text={3000}
+fk5;circle 4.911378 3.599640 0.001 # color=green text={50000}
+fk5;circle 4.905376 3.597970 0.001 # color=green text={3000}
+fk5;circle 4.900042 3.692348 0.001 # color=green text={5}
+fk5;circle 4.873361 3.697120 0.001 # color=green text={6}
+fk5;circle 4.871671 3.690222 0.001 # color=green text={7}
 fk5;circle 4.738866 3.653951 0.001 # color=green text={11}
 fk5;circle 4.746265 3.651569 0.001 # color=green text={6}
 fk5;circle 4.756671 3.651037 0.001 # color=green text={1}
@@ -105,7 +102,7 @@ fk5;circle 4.824713 3.672602 0.001 # color=green text={1}
 fk5;circle 4.854774 3.673697 0.001 # color=green text={5805}
 fk5;circle 4.855443 3.669111 0.001 # color=green text={1311}
 fk5;circle 4.868788 3.672519 0.001 # color=green text={320}
-fk5;circle 4.879120 3.670873 0.001 # color=green text={33}
+fk5;circle 4.877339 3.671590 0.001 # color=green text={3117}
 fk5;circle 4.901648 3.672740 0.001 # color=green text={2}
 fk5;circle 4.979743 3.673560 0.001 # color=green text={107}
 fk5;circle 4.980553 3.666369 0.001 # color=green text={2654}
@@ -536,7 +533,6 @@ fk5;circle 4.855521 3.593636 0.001 # color=green text={731}
 fk5;circle 4.857304 3.593880 0.001 # color=green text={33}
 fk5;circle 4.869168 3.593160 0.001 # color=green text={81}
 fk5;circle 4.879809 3.596240 0.001 # color=green text={1786}
-fk5;circle 4.886645 3.592744 0.001 # color=green text={4}
 fk5;circle 4.892680 3.595495 0.001 # color=green text={88}
 fk5;circle 4.899555 3.596276 0.001 # color=green text={1360}
 fk5;circle 4.903701 3.595401 0.001 # color=green text={4480}
@@ -544,8 +540,8 @@ fk5;circle 4.907643 3.591803 0.001 # color=green text={5}
 fk5;circle 4.913290 3.595338 0.001 # color=green text={1088}
 fk5;circle 4.913432 3.593376 0.001 # color=green text={844}
 fk5;circle 4.914805 3.596119 0.001 # color=green text={3621}
-fk5;circle 4.918577 3.593358 0.001 # color=green text={31}
 fk5;circle 4.918657 3.596568 0.001 # color=green text={83}
+fk5;circle 4.925736 3.594401 0.001 # color=green text={6749}
 fk5;circle 4.927956 3.594969 0.001 # color=green text={1494}
 fk5;circle 4.936028 3.591447 0.001 # color=green text={10}
 fk5;circle 4.966234 3.596772 0.001 # color=green text={2375}
@@ -628,7 +624,7 @@ fk5;circle 4.842469 3.745755 0.001 # color=green text={340}
 fk5;circle 4.871576 3.744617 0.001 # color=green text={119}
 fk5;circle 4.880922 3.746208 0.001 # color=green text={834}
 fk5;circle 4.890932 3.746058 0.001 # color=green text={240}
-fk5;circle 4.891026 3.741398 0.001 # color=green text={53}
+fk5;circle 4.898914 3.742520 0.001 # color=green text={615}
 fk5;circle 4.958103 3.747988 0.001 # color=green text={31}
 fk5;circle 4.963671 3.744559 0.001 # color=green text={84}
 fk5;circle 4.983581 3.741983 0.001 # color=green text={24}
@@ -759,8 +755,8 @@ fk5;circle 4.861843 3.620733 0.001 # color=green text={193}
 fk5;circle 4.863689 3.622792 0.001 # color=green text={2905}
 fk5;circle 4.878033 3.620716 0.001 # color=green text={121}
 fk5;circle 4.887832 3.616371 0.001 # color=green text={180}
+fk5;circle 4.897734 3.622066 0.001 # color=green text={2987}
 fk5;circle 4.900127 3.623251 0.001 # color=green text={392}
-fk5;circle 4.901767 3.623098 0.001 # color=green text={1861}
 fk5;circle 4.902895 3.617053 0.001 # color=green text={2056}
 fk5;circle 4.903639 3.617938 0.001 # color=green text={2468}
 fk5;circle 4.904256 3.621337 0.001 # color=green text={967}
@@ -809,7 +805,6 @@ fk5;circle 4.775287 3.773281 0.001 # color=green text={1}
 fk5;circle 4.813588 3.770379 0.001 # color=green text={721}
 fk5;circle 4.844188 3.769948 0.001 # color=green text={505}
 fk5;circle 4.847702 3.770938 0.001 # color=green text={337}
-fk5;circle 4.889210 3.773543 0.001 # color=green text={2}
 fk5;circle 4.910414 3.774004 0.001 # color=green text={38}
 fk5;circle 4.924813 3.771035 0.001 # color=green text={159}
 fk5;circle 4.938223 3.774247 0.001 # color=green text={429}
@@ -841,9 +836,11 @@ fk5;circle 4.885251 3.625022 0.001 # color=green text={828}
 fk5;circle 4.900409 3.626586 0.001 # color=green text={80}
 fk5;circle 4.902287 3.630010 0.001 # color=green text={7598}
 fk5;circle 4.903509 3.627853 0.001 # color=green text={10942}
+fk5;circle 4.909294 3.626431 0.001 # color=green text={1912}
 fk5;circle 4.913313 3.632035 0.001 # color=green text={5077}
 fk5;circle 4.932463 3.628769 0.001 # color=green text={49}
 fk5;circle 4.936799 3.629183 0.001 # color=green text={9}
+fk5;circle 4.937833 3.627455 0.001 # color=green text={11}
 fk5;circle 4.940085 3.626080 0.001 # color=green text={3456}
 fk5;circle 4.953948 3.625452 0.001 # color=green text={1353}
 fk5;circle 4.954608 3.626520 0.001 # color=green text={166}
@@ -960,7 +957,7 @@ fk5;circle 4.841867 3.644254 0.001 # color=green text={222}
 fk5;circle 4.873270 3.646789 0.001 # color=green text={4448}
 fk5;circle 4.879150 3.647813 0.001 # color=green text={3}
 fk5;circle 4.882727 3.643715 0.001 # color=green text={495}
-fk5;circle 4.890696 3.644910 0.001 # color=green text={2191}
+fk5;circle 4.890036 3.643920 0.001 # color=green text={1362}
 fk5;circle 4.893435 3.644825 0.001 # color=green text={86}
 fk5;circle 4.905192 3.649237 0.001 # color=green text={205}
 fk5;circle 4.947041 3.643721 0.001 # color=green text={80}

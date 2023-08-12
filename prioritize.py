@@ -130,6 +130,10 @@ except:
     raise SystemExit('Invalid align file.')
 
 v.cosdec = np.cos(np.radians(v.guideDEC))
+
+# prepare list of excluded targets
+v.exclude_target = [str(x) for x in v.exclude_target]
+
 print(v)
 
 # load known redshifts (new_method)

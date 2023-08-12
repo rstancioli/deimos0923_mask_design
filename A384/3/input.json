@@ -1,0 +1,23 @@
+{
+  "maskRA": 42.082202537083326,
+  "maskDEC": -2.264947927777778,
+  "zclust": 0.24,
+  "slitPA": 39,
+  "BCGmag": 16.95,
+  "axis": {
+    "kernel_width": 0,
+    "ra_center": 4.909949823333332,
+    "dec_center": 3.607708264166667,
+    "axisPA": 175
+  }, 
+  "previous_masks": ["A384/1/dsim/output.txt"],
+  "exclude_target": [],
+  "specialtargets": [
+    [42.03705474,
+    -2.27706973,
+    18.461999893188477,
+    100000]
+  ]
+}
+
+
