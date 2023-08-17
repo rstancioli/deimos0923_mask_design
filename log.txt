@@ -35,6 +35,7 @@ PS catalog download
 	Remember to establish conditions, especially nDetections>=2
 		Also rMeanKronMag>-990
 			THESE ARE VERY IMPORTANT. Even if it results in unmatched sources, we don't want to target spurious detections!!
+			rMeanKronMag can actually be unconstrained, since the script takes care of it.
 
 MAST zphot SQL query
 	see jupyter notebook
@@ -56,7 +57,7 @@ x make target catalog for aladin instead of region file
 x make catalog for archivalz
 x make catalogs for selected and non-selected
 - implement improvements suggested by David in the google doc
-	- implement penalty for off-axis
+	x implement penalty for off-axis
 x bogus selected targets
 	x check PS catalogs (photo and zphoto)
 		x bogus targets have low nDetections
@@ -259,7 +260,7 @@ Faik:
 
 MASK B
 Faik's mask B looks wrong.
-Not done yet.
+Started from scratch. Done.
 
 ____________________________________________________________________________________
 ask david
@@ -275,5 +276,11 @@ ask david
 	
 
 
+____________________________________________________________________________________
+starlist
+	download script: https://www2.keck.hawaii.edu/realpublic/inst/deimos/checklist-pm.html points to https://www2.keck.hawaii.edu/realpublic/inst/deimos/to_download/deimos_starlist.tar
+	place all dsim output in a single directory
+write down mask making instructions.
 
+fold -80 0019A.fits |grep -C3 2000.00000
 
